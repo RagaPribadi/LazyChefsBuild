@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lazy Chef</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_string_1">New Project</string>
+    <string name="main_string_2">Search for Recipes</string>
+    <string name="main_string_3">Favorites</string>
+</resources>

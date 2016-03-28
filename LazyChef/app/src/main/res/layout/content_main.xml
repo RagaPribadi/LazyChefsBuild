@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:id="@+id/layoutContainer" android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.3"
+        android:background="#dd1021">
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.75"
+        android:background="#dd1021">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout2">
+
+        </LinearLayout>
+
+        <Button
+            android:text="@string/main_string_3"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:id="@+id/main_button_3"
+            style="@style/ButtonStyle"
+            android:background="#ffc300"
+            android:layout_below="@+id/main_button_2">
+        </Button>
+
+        <Button
+            android:text="@string/main_string_2"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:id="@+id/main_button_2"
+            android:onClick="loadXML"
+            style="@style/ButtonStyle"
+            android:background="#ffc300"
+            android:layout_below="@+id/linearLayout2">
+        </Button>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/lazylogo"
+            android:src="@drawable/lazy_logo"
+            android:scaleType="fitXY"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.3"
+        android:background="#dd1021">
+    </RelativeLayout>
+</LinearLayout>
