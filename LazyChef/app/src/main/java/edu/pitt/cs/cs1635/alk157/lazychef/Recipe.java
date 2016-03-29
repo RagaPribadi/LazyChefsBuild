@@ -28,7 +28,7 @@ public class Recipe extends AppCompatActivity {
         recipeName.setText("Chicken Parm");
         cookTime.setText("25 Minutes");
         calories.setText("450");
-        nutrition.setText("30g Carbs 46g Protein 4g Fat");
+        nutrition.setText("30g Carbs");
         recipeDetails.setText("Add 1/2 cup of cheese to chicken.  Microwave chicken for 5 minutes.  Add sauce to chicken");
 
         nutrition.getText();
