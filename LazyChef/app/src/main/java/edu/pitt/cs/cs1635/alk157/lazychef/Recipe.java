@@ -28,27 +28,27 @@ public class Recipe extends AppCompatActivity {
         recipeName.setText("Chicken Parm");
         cookTime.setText("25 Minutes");
         calories.setText("450");
-        nutrition.setText("Good");
-        recipeDetails.setText("Put the cheese on the chicken");
+        nutrition.setText("30g Carbs 46g Protein 4g Fat");
+        recipeDetails.setText("Add 1/2 cup of cheese to chicken.  Microwave chicken for 5 minutes.  Add sauce to chicken");
 
         nutrition.getText();
     }
 
     public void toRecipeList(View view)
     {
-        Intent i = new Intent(this, Recipe.class);//Change to right name
+        Intent i = new Intent(this, RecipeList.class);//Change to right name
         startActivity(i);
     }
 
     public void toFavorites(View view)
     {
-        Intent i = new Intent(this, Recipe.class);//change to right name
+        Intent i = new Intent(this, FavoriteActivity.class);//change to right name
         startActivity(i);
     }
 
     public void addFavorites(View view)
     {
-        Intent i = new Intent(this, Recipe.class);//change to right name
+        Intent i = new Intent(this, FavoriteActivity.class);//change to right name
         i.putExtra("favoriteRecipe",recipeName.getText());
         startActivity(i);
     }
