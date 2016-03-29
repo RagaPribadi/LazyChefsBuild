@@ -4,4 +4,12 @@
     <string name="main_string_1">New Project</string>
     <string name="main_string_2">Search for Recipes</string>
     <string name="main_string_3">Favorites</string>
+ <string name="app_name">Lazy Try</string>
+    <string name="action_settings">Settings</string>
+    <string name="exampleText">Ex: chicken</string>
+    <string name="heading">Add Ingredients</string>
+    <string name="sample">Added ingredients appear here</string>
+    <string name="done">Add another ingredient!</string>
+    <string name="button_delete_row_description">This button adds an ingredient</string>
+    <string name="search">Search Recipes</string>
 </resources>

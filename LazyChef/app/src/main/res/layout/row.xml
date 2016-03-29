@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:background="#980707">
+
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:ems="10"
+        android:hint="" >
+        <requestFocus />
+    </EditText>
+
+
+    <ImageButton
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@android:drawable/ic_input_delete"
+        android:background="#980707"
+        android:contentDescription="@string/button_delete_row_description"
+        android:onClick="onDeleteClicked"/>
+
+</LinearLayout>
