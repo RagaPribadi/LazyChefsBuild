@@ -63,7 +63,7 @@ public class AddIngredients extends AppCompatActivity {
 
 
         //connect textViews so they can display later
-        ent1 = (TextView) findViewById(R.id.res1);
+       // ent1 = (TextView) findViewById(R.id.res1);
 
         //connect final done button to code
         doneB = (Button) findViewById(R.id.button);
@@ -126,22 +126,23 @@ public class AddIngredients extends AppCompatActivity {
     //onClick handler for search button
     public void getValues(View v){
 
-        String send = null;
+      /*  String send = null;
        int c =  mContainerView.getChildCount();
         for (int i = 1; i <= c; i++){
             Editable r =  (Editable) mContainerView.getChildAt(i); //get these into a string
             String val = r.toString();//this is coming out null
             send = send + ", " + val;//join to the string send and ", "
             System.out.println(send);
-
+            */
             //send an intent to the next activity - for demo just pass chicken
-/**
-            Intent i = new Intent(getApplicationContext(), NewActivity.class);
+
+            /**Intent i = new Intent(getApplicationContext(), NewActivity.class);
             i.putExtra("commaDelimitedList", send);
             startActivity(i);    **/
+            Intent intent = new Intent(this, RecipeList.class);
+            startActivity(intent);
 
-
-        }
+        //}
 
     }
 

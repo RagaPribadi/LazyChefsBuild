@@ -26,7 +26,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.pitt.cs.cs1635.alk157.lazychef.MainActivity" />
         </activity>
-
+        <activity
+            android:name=".AddIngredients"
+            android:screenOrientation="portrait"
+            android:label="Project">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.pitt.cs.cs1635.alk157.lazychef.MainActivity" />
+        </activity>
+        <activity android:name=".RecipeList"></activity>
+        <activity android:name=".Recipe"></activity>
     </application>
 
 </manifest>

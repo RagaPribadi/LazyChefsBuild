@@ -19,13 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /**
 
     public void searchRecipe(View view) {
-        Intent intent = new Intent(this, StageActivity.class);
+        Intent intent = new Intent(this, AddIngredients.class);
         startActivity(intent);
     }
-     */
 
     public void faveRecipes(View view) {
         Intent intent = new Intent(this, FavoriteActivity.class);
