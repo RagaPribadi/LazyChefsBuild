@@ -48,7 +48,7 @@ public class Recipe extends AppCompatActivity {
 
     public void addFavorites(View view)
     {
-        Intent i = new Intent(this, FavoriteActivity.class);//change to right name
+        Intent i = new Intent(this, FakeFavoriteActivity.class);//change to right name
         i.putExtra("favoriteRecipe",recipeName.getText());
         startActivity(i);
     }
