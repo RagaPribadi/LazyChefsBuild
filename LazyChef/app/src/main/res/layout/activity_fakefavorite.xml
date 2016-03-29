@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF0000">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipes"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:id="@+id/textView3" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/recipeImage1"
+            android:layout_width= "100dp"
+            android:layout_height="100dp"
+            android:src = "@mipmap/chickenparm"
+            android:layout_marginTop="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:id="@+id/recipe1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Chicken Parm"
+                android:onClick="startNewScreen"
+                android:clickable="true"
+                android:layout_alignTop="@+id/recipeImage1"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="60dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="#FFFFFF"
+                android:layout_height="58dp"
+                android:text = "Calories: 450"
+                android:layout_alignTop="@+id/recipe1"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1.05" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
