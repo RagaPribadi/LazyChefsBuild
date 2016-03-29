@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recipes"
+        android:text="Favorite Recipes"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:id="@+id/textView3" />
@@ -54,5 +54,13 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Main Menu"
+        android:onClick="backToMain"
+        android:id="@+id/button4"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
