@@ -1,4 +1,4 @@
-package edu.pitt.cs.cs1635.alk157.lazytry;
+package edu.pitt.cs.cs1635.alk157.lazychef;
 
 import android.media.Image;
 import android.os.Bundle;

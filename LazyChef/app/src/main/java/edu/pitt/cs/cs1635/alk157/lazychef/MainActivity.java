@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StageActivity.class);
         startActivity(intent);
     }
-
+     */
 
     public void faveRecipes(View view) {
-        Intent intent = new Intent(this, XMLActivity.class);
+        Intent intent = new Intent(this, FavoriteActivity.class);
         startActivity(intent);
     }
 
-    */
+
 }

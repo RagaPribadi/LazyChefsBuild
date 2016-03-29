@@ -27,6 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:id="@+id/main_button_3"
+            android:onClick="faveRecipes"
             style="@style/ButtonStyle"
             android:background="#ffc300"
             android:layout_below="@+id/main_button_2">
@@ -37,7 +38,7 @@
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:id="@+id/main_button_2"
-            android:onClick="loadXML"
+            android:onClick="searchRecipe"
             style="@style/ButtonStyle"
             android:background="#ffc300"
             android:layout_below="@+id/linearLayout2">
