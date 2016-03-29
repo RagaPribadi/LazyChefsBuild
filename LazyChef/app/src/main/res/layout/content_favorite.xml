@@ -16,5 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
+        android:textSize="36dp"
         android:text="Uh oh! Looks like you haven't favorited any recipes yet!" />
 </RelativeLayout>
