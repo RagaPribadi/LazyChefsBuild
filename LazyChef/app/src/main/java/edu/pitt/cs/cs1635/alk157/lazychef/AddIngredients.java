@@ -1,11 +1,13 @@
 package edu.pitt.cs.cs1635.alk157.lazychef;
 
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +26,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.content.Intent;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+
 public class AddIngredients extends AppCompatActivity {
 
 
@@ -36,12 +45,14 @@ public class AddIngredients extends AppCompatActivity {
 
     //private EditText addIngred; // add ingredients box
     private TextView ent1; //the first recipe box
-   // private int ent1N = 1;//this correlates to the position of the box that will be updated when clear
+    // private int ent1N = 1;//this correlates to the position of the box that will be updated when clear
     private Button doneB; //send to next activity
     private int entN = 1; //where plusIc places the string
-   // private int clearN = 0; //index addition to textEdit
-   // private int maxN = 7;//expands with clearN
-   private Button mAddButton;
+    // private int clearN = 0; //index addition to textEdit
+    // private int maxN = 7;//expands with clearN
+    private Button mAddButton;
+    private String searched_result;
+    private String keywords;
 
 
     @Override
@@ -139,6 +150,11 @@ public class AddIngredients extends AppCompatActivity {
             /**Intent i = new Intent(getApplicationContext(), NewActivity.class);
             i.putExtra("commaDelimitedList", send);
             startActivity(i);    **/
+
+            //ip address will be changed to adjust to different ip.
+            //client myClient = new client("192.168.43.30", 9000);
+            //myClient.execute();
+            //this will be moved later.
             Intent intent = new Intent(this, RecipeList.class);
             startActivity(intent);
 
@@ -221,5 +237,63 @@ public class AddIngredients extends AppCompatActivity {
 
 // Inflate at the end of all rows but before the "Add new" button
         mContainerView.addView(rowView, mContainerView.getChildCount() - 1);
+    }
+
+    public class client extends AsyncTask<Void, Void, Void> {
+
+        String dstAddress;
+        int dstPort;
+        int mystate;
+
+        client(String addr, int port) {
+            dstAddress = addr;
+            dstPort = port;
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            Socket socket = null;
+            Log.i("socket","before connect");
+            try {
+                socket = new Socket(dstAddress, dstPort);
+                Log.i("socket","connected");
+                // Create the input & output streams to the server
+                ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
+                Log.i("socket","test");
+
+       			 /* Send Keywords to the server */
+                Log.i("socket","Before Data sent");
+                outToServer.writeObject(keywords);
+                Log.i("socket","data Sent");
+
+                ObjectInputStream inFromServer = new ObjectInputStream(socket.getInputStream());
+
+                searched_result = (String)inFromServer.readObject(); //received the search list
+                Log.i("socket","data Receive");
+
+            } catch (UnknownHostException e) {
+                Log.i("socket", "unknownHostException");
+                e.printStackTrace();
+            } catch (Exception e) {
+                Log.i("socket", "Exception");
+                e.printStackTrace();
+            } finally {
+                if (socket != null) {
+                    try {
+                        socket.close();
+                        Log.i("socket", "close");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+        }
     }
 }
