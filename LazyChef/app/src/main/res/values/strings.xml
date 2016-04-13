@@ -12,6 +12,6 @@
     <string name="search">Search Recipes</string>
     <string-array name="packageType_Lists">
         <item>Calories</item>
-        <item>Nutrition</item>
+        <item>Protein</item>
     </string-array>
 </resources>

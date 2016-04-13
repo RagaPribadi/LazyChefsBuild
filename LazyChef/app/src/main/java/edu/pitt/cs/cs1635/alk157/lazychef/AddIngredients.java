@@ -155,7 +155,11 @@ public class AddIngredients extends AppCompatActivity {
             //client myClient = new client("192.168.43.30", 9000);
             //myClient.execute();
             //this will be moved later.
+            String recipes = "0|Easy Spinach Souffle|http://images.media-allrecipes.com/userphotos/250x250/681190.jpg|{1 egg}{1/3 cup 1% milk}{1/3 cup grated Parmesan cheese}{1 teaspoon crushed garlic}{salt and pepper to taste}{2 (10 ounce) packages frozen chopped spinach, thawed and drained}|{Servings: 5}{Calories:89}{Fat: 4.1}{Carbs: 6.8}{Protein: 9}{Cholesterol: 44}{Sodium: 489}|{Prep: 5}{Cook: 20}{Ready in: 25}|{Preheat oven to 350 degrees F (175 degrees C).}{In a medium bowl whisk together egg, milk, cheese, garlic, salt and pepper.  Fold in spinach.  Place in a small casserole dish.}{Bake in preheated oven for 20 minutes, or until lightly set.}{NOTE:  If you are in a hurry, use a microwave safe casserole dish, cover with plastic wrap, and cook on high for 3 minutes.  Release the steam, recover, and cook on high for another 3 minutes.  Enjoy!}\n";
+            recipes += "1|Chili Cheese Dip V|http://images.media-allrecipes.com/userphotos/250x250/475037.jpg|{1 (8 ounce) package cream cheese, softened}{1 (15 ounce) can chili}{1 cup shredded Cheddar cheese}|{Servings: 32}{Calories:53}{Fat: 4.3}{Carbs: 1.8}{Protein: 2.2}{Cholesterol: 14}{Sodium: 111}|{Prep: 10}{Cook: 5}{Ready in: 15}|{In the bottom of a 9 inch, microwave safe round baking dish, spread the cream cheese. Top cream cheese with an even layer of chili. Sprinkle Cheddar cheese over the chili.}{Heat in the microwave on high heat 5 minutes, or until the cheese has melted.}\n";
+            recipes += "2|Hasty Chocolate Pudding|http://images.media-allrecipes.com/userphotos/250x250/39891.jpg|{1/2 cup white sugar}{1/3 cup unsweetened cocoa powder}{3 tablespoons cornstarch}{2 cups milk}{2 teaspoons vanilla extract}|{Servings: 4}{Calories:203}{Fat: 3.4}{Carbs: 40.3}{Protein: 5.4}{Cholesterol: 10}{Sodium: 52}|{Prep: 5}{Cook: 10}{Ready in: 15}|{In a microwave-safe bowl, whisk together the sugar, cocoa and cornstarch. Whisk in milk a little at a time so the mixture does not have any dry lumps.}{Place in the microwave, and cook for 3 minutes on high. Stir, then cook at 1 minute intervals, stirring between cooking times for 2 to 4 minutes, or until shiny and thick. Stir in vanilla.}{Place a piece of plastic wrap directly on the surface of the pudding to prevent a skin from forming, and chill in the refrigerator. Serve cold.\n";
             Intent intent = new Intent(this, RecipeList.class);
+            intent.putExtra("recipe_package", recipes);
             startActivity(intent);
 
         //}
@@ -238,7 +242,7 @@ public class AddIngredients extends AppCompatActivity {
 // Inflate at the end of all rows but before the "Add new" button
         mContainerView.addView(rowView, mContainerView.getChildCount() - 1);
     }
-
+    /*
     public class client extends AsyncTask<Void, Void, Void> {
 
         String dstAddress;
@@ -260,8 +264,9 @@ public class AddIngredients extends AppCompatActivity {
                 // Create the input & output streams to the server
                 ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
                 Log.i("socket","test");
-
+                   */
        			 /* Send Keywords to the server */
+    /*
                 Log.i("socket","Before Data sent");
                 outToServer.writeObject(keywords);
                 Log.i("socket","data Sent");
@@ -295,5 +300,5 @@ public class AddIngredients extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
         }
-    }
+    }*/
 }

@@ -25,6 +25,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
@@ -41,7 +42,6 @@
             android:id="@+id/recipeImage1"
             android:layout_width= "100dp"
             android:layout_height="100dp"
-            android:src = "@mipmap/chickenparm"
             android:layout_marginTop="45dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
@@ -53,19 +53,20 @@
                 android:id="@+id/recipe1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "Chicken Parm"
                 android:onClick="startNewScreen"
                 android:clickable="true"
                 android:layout_alignTop="@+id/recipeImage1"
+                android:text="name"
                 android:layout_marginTop="60dp"
-                android:layout_marginLeft="60dp"/>
+                android:layout_marginLeft="60dp" />
             <TextView
+                android:id="@+id/content1"
                 android:layout_width="wrap_content"
                 android:layout_height="58dp"
-                android:text = "Calories: 450"
                 android:layout_alignTop="@+id/recipe1"
+                android:text = "content"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="60dp"
                 android:layout_weight="1.05" />
         </LinearLayout>
 
@@ -84,7 +85,6 @@
         android:id="@+id/recipeImage2"
         android:layout_width= "100dp"
         android:layout_height="100dp"
-        android:src = "@mipmap/chicken2"
         android:layout_below="@+id/view2"
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true" />
@@ -100,19 +100,20 @@
             android:id="@+id/recipe2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "Mahogany Chicken Wings"
             android:layout_alignTop="@+id/recipeImage2"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="60dp"
             android:onClick="startNewScreen"
+            android:text="name"
             android:clickable="true"/>
         <TextView
+            android:id="@+id/content2"
             android:layout_width="wrap_content"
             android:layout_height="58dp"
-            android:text = "Calories: 560"
+            android:text = "content"
             android:layout_alignTop="@+id/recipe2"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="60dp"
             android:layout_weight="1.05" />
     </LinearLayout>
 
@@ -136,7 +137,6 @@
         android:id="@+id/recipeImage3"
         android:layout_width= "100dp"
         android:layout_height="100dp"
-        android:src = "@mipmap/chicken3"
         android:layout_below="@+id/view"
         android:layout_toStartOf="@+id/linearLayout2"
         android:layout_marginTop="20dp"/>
@@ -150,19 +150,20 @@
             android:id="@+id/recipe3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "Baked Chicken Wings"
             android:layout_alignTop="@+id/recipeImage3"
             android:onClick="startNewScreen"
             android:clickable="true"
+            android:text="name"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="60dp"/>
         <TextView
+            android:id="@+id/content3"
             android:layout_width="wrap_content"
             android:layout_height="58dp"
-            android:text = "Calories: 760"
+            android:text = "content"
             android:layout_alignTop="@+id/recipe3"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="60dp"
             android:layout_weight="1.05" />
     </LinearLayout>
 </RelativeLayout>
