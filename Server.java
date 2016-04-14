@@ -1,6 +1,5 @@
 import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.util.Date;
 
 public class Server {
@@ -9,10 +8,13 @@ public class Server {
     {
         //default port number is 9090
         ServerSocket listener = new ServerSocket(9090);
+        InetAddress IP=InetAddress.getLocalHost();
+        System.out.println("IP of my system is := "+IP.getHostAddress());
         try {
             while (true) {
                 Socket socket = listener.accept();
                 try {
+                   System.out.println("accept");
                    ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                    //convert ObjectInputStream object to String
                    String keyword = (String) ois.readObject();
@@ -25,7 +27,7 @@ public class Server {
                       String line;
                       while ((line = br.readLine()) != null) {
                           // process line
-                        if(line.contains(keyword) && counter < 6)
+                        if(line.contains(keyword) && counter < 3)
                         {
                            message += (line + "\n"); //check whether the line read in contains search key word 
                            counter++;
