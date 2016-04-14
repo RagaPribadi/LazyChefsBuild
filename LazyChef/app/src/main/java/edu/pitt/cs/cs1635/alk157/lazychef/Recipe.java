@@ -14,6 +14,13 @@ public class Recipe extends AppCompatActivity {
     TextView nutrition;
     TextView recipeDetails;
 
+    String rID;
+    String rFull;
+    String cTime;
+    String cal;
+    String nut;
+    String rDetials;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +32,14 @@ public class Recipe extends AppCompatActivity {
         nutrition = (TextView) findViewById(R.id.nutrition);
         recipeDetails = (TextView) findViewById(R.id.recipeDetails);
 
-        recipeName.setText("Chicken Parm");
-        cookTime.setText("25 Minutes");
-        calories.setText("450");
-        nutrition.setText("30g Carbs");
-        recipeDetails.setText("Add 1/2 cup of cheese to chicken.  Microwave chicken for 5 minutes.  Add sauce to chicken");
+        rFull = getIntent().getExtras().getString("rFull","full_recipes");//name of recipe
+        rID = getIntent().getExtras().getString("rID","selected_recipes");//recipe ID number
+
+        recipeName.setText(rFull);
+        cookTime.setText(cTime);
+        calories.setText(cal);
+        nutrition.setText(nut);
+        recipeDetails.setText(rDetials);
 
         nutrition.getText();
     }
@@ -37,6 +47,7 @@ public class Recipe extends AppCompatActivity {
     public void toRecipeList(View view)
     {
         Intent i = new Intent(this, RecipeList.class);//Change to right name
+        i.putExtra("recipe_package",rFull);
         startActivity(i);
     }
 
@@ -49,7 +60,7 @@ public class Recipe extends AppCompatActivity {
     public void addFavorites(View view)
     {
         Intent i = new Intent(this, FakeFavoriteActivity.class);//change to right name
-        i.putExtra("favoriteRecipe",recipeName.getText());
+        i.putExtra("rID",rID);
         startActivity(i);
     }
 }
