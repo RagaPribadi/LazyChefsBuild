@@ -1,10 +1,17 @@
 package edu.pitt.cs.cs1635.alk157.lazychef;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.InputStream;
+import java.net.URL;
 
 public class Recipe extends AppCompatActivity {
 
@@ -13,8 +20,9 @@ public class Recipe extends AppCompatActivity {
     TextView calories;
     TextView nutrition;
     TextView recipeDetails;
+    private ImageView mainImage = null;
 
-    String rID;
+    String rSelected;
     String rFull;
     String cTime;
     String cal;
@@ -32,16 +40,36 @@ public class Recipe extends AppCompatActivity {
         nutrition = (TextView) findViewById(R.id.nutrition);
         recipeDetails = (TextView) findViewById(R.id.recipeDetails);
 
-        rFull = getIntent().getExtras().getString("rFull","full_recipes");//name of recipe
-        rID = getIntent().getExtras().getString("rID","selected_recipes");//recipe ID number
+        mainImage = (ImageView)findViewById(R.id.imageView);
 
-        recipeName.setText(rFull);
-        cookTime.setText(cTime);
-        calories.setText(cal);
-        nutrition.setText(nut);
-        recipeDetails.setText(rDetials);
+        Bundle extras = getIntent().getExtras();
 
-        nutrition.getText();
+        rSelected = extras.getString("selected_recipes");
+        rFull = extras.getString("full_recipes");
+
+        String[] elements = rSelected.split("\\|");
+
+        String attributes = elements[4];
+        int startIndex1 = attributes.indexOf("Calories:")+("Calories:").length();
+        int endIndex1 = attributes.indexOf("Fat")-2;
+        String substring1 = attributes.substring(startIndex1, endIndex1);
+        if(substring1.contains(" "))
+            substring1 = substring1.substring(1, substring1.length());
+        double cals = Double.parseDouble(substring1);
+        int startIndex2 = attributes.indexOf("Protein:")+("Protein:").length();
+        int endIndex2= attributes.indexOf("Cholesterol:")-2;
+        String substring2 = attributes.substring(startIndex2, endIndex2);
+        if(substring2.contains(" "))
+            substring2 = substring2.substring(1, substring2.length());
+        double protein = Double.parseDouble(substring2);
+
+        recipeName.setText(elements[1]);
+        cookTime.setText("15 Minutes");
+        calories.setText(cals+"");
+        nutrition.setText(protein+"g of Protein");
+        recipeDetails.setText(elements[6]);
+
+        new LoadImage().execute(elements[2]);
     }
 
     public void toRecipeList(View view)
@@ -59,8 +87,29 @@ public class Recipe extends AppCompatActivity {
 
     public void addFavorites(View view)
     {
-        Intent i = new Intent(this, FakeFavoriteActivity.class);//change to right name
-        i.putExtra("rID",rID);
+        Intent i = new Intent(this, FavoriteActivity.class);//change to right name
+        i.putExtra("selected_recipes",rSelected);
         startActivity(i);
     }
+
+    private class LoadImage extends AsyncTask<String, String, Bitmap[]> {
+
+        protected Bitmap[] doInBackground(String... args) {
+            Bitmap bitmap[] = new Bitmap[3];
+            try {
+                bitmap[0] = BitmapFactory.decodeStream((InputStream) new URL(args[0]).getContent());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        protected void onPostExecute(Bitmap[] image) {
+            if(image != null) {
+                mainImage.setImageBitmap(image[0]);
+            }
+        }
+    }
+
 }
