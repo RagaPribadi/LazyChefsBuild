@@ -70,6 +70,18 @@ public class Recipe extends AppCompatActivity {
         if(substring2.contains(" "))
             substring2 = substring2.substring(1, substring2.length());
         double protein = Double.parseDouble(substring2);
+        int startIndex3 = attributes.indexOf("Carbs:")+("Carbs:").length();
+        int endIndex3= attributes.indexOf("Protein:")-2;
+        String substring3 = attributes.substring(startIndex3, endIndex3);
+        if(substring3.contains(" "))
+            substring3 = substring3.substring(1, substring3.length());
+        double carbs = Double.parseDouble(substring3);
+        int startIndex4 = attributes.indexOf("Fat:")+("Fat:").length();
+        int endIndex4= attributes.indexOf("Carbs:")-2;
+        String substring4 = attributes.substring(startIndex4, endIndex4);
+        if(substring3.contains(" "))
+            substring4 = substring4.substring(1, substring4.length());
+        double fats = Double.parseDouble(substring4);
         String instruction="";
         String[] primitive = elements[6].split("\\}\\{");
         primitive[0] = primitive[0].substring(1, primitive[0].length());
@@ -85,7 +97,7 @@ public class Recipe extends AppCompatActivity {
 
         cookTime.setText(cook_minutes+" Minutes");
         calories.setText(cals+"");
-        nutrition.setText(protein+"g of Protein");
+        nutrition.setText(protein+"g of Protein\n"+ carbs+"g of Carbs\n"+ fats+"g of Fat");
         recipeDetails.setMovementMethod(new ScrollingMovementMethod());
         recipeDetails.setText(instruction);
 
@@ -158,7 +170,7 @@ public class Recipe extends AppCompatActivity {
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
+                String receiveString;
 
                 while ( (receiveString = bufferedReader.readLine()) != null ) {
                     favorite_recipes.add(receiveString);
