@@ -111,6 +111,9 @@ public class Recipe extends AppCompatActivity {
         if(!existed)
         {
             writeToFile(rSelected);
+            Log.i("start", "go to favorite class now ");
+            Intent i = new Intent(this, FavoriteActivity.class);//change to right name
+            startActivity(i);
         }
         else
         {
@@ -131,6 +134,7 @@ public class Recipe extends AppCompatActivity {
                 }
                 to_be_write += rSelected;
                 writeToFile(to_be_write);
+                Log.i("start", "go to favorite class now ");
                 Intent i = new Intent(this, FavoriteActivity.class);//change to right name
                 startActivity(i);
             }
