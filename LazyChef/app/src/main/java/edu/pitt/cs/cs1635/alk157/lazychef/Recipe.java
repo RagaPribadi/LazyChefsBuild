@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -62,12 +63,24 @@ public class Recipe extends AppCompatActivity {
         if(substring2.contains(" "))
             substring2 = substring2.substring(1, substring2.length());
         double protein = Double.parseDouble(substring2);
-
+        String instruction="";
+        String[] primitive = elements[6].split("\\}\\{");
+        primitive[0] = primitive[0].substring(1, primitive[0].length());
+        primitive[primitive.length-1] = primitive[primitive.length-1].substring(0, primitive[primitive.length-1].length()-1);
+        for(int i = 0; i < primitive.length; i++)
+        {
+            instruction += ((i+1)+". "+primitive[i]+"\n\n");
+        }
         recipeName.setText(elements[1]);
-        cookTime.setText("15 Minutes");
+        int start_index = elements[5].indexOf("Cook: ") + ("Cook: ").length();
+        int end_index = elements[5].indexOf("Ready in:") - 2;
+        int cook_minutes = Integer.parseInt(elements[5].substring(start_index, end_index));
+
+        cookTime.setText(cook_minutes+" Minutes");
         calories.setText(cals+"");
         nutrition.setText(protein+"g of Protein");
-        recipeDetails.setText(elements[6]);
+        recipeDetails.setMovementMethod(new ScrollingMovementMethod());
+        recipeDetails.setText(instruction);
 
         new LoadImage().execute(elements[2]);
     }
