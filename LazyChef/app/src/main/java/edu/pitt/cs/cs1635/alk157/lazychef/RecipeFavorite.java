@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -22,9 +21,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.SynchronousQueue;
 
-public class Recipe extends AppCompatActivity {
+public class RecipeFavorite extends AppCompatActivity {
 
     TextView recipeName;
     TextView cookTime;
@@ -35,12 +33,11 @@ public class Recipe extends AppCompatActivity {
     ArrayList<String> favorite_recipes = new ArrayList<String>();
     private boolean existed = true;
     String rSelected;
-    String rFull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe);
+        setContentView(R.layout.activity_recipe_favorite);
 
         recipeName = (TextView) findViewById(R.id.recipeName);
         cookTime = (TextView) findViewById(R.id.cookTime);
@@ -52,9 +49,8 @@ public class Recipe extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-        rSelected = extras.getString("selected_recipes");
-        rFull = extras.getString("full_recipes");
-
+        rSelected = extras.getString("recipe_favorite");
+        Log.i("passed", rSelected);
         String[] elements = rSelected.split("\\|");
 
         String attributes = elements[4];
@@ -92,10 +88,31 @@ public class Recipe extends AppCompatActivity {
         new LoadImage().execute(elements[2]);
     }
 
-    public void toRecipeList(View view)
+    public void deleteThisEntry(View view)
     {
-        Intent i = new Intent(this, RecipeList.class);//Change to right name
-        i.putExtra("recipe_package",rFull);
+        readFromFile();
+        String to_be_sent = "";
+        if(favorite_recipes.size() == 1)
+        {
+            writeToFile("");
+        }
+        else {
+            for (String recipe : favorite_recipes) {
+                if (!recipe.equals(rSelected)) {
+                    to_be_sent += (recipe + "\n");
+                }
+            }
+            to_be_sent = to_be_sent.substring(0, to_be_sent.length() - 1);
+            writeToFile(to_be_sent);
+        }
+        //go to favorite page automatically
+        Intent i = new Intent(this, FavoriteActivity.class);//change to right name
+        startActivity(i);
+    }
+
+    public void toMain(View view)
+    {
+        Intent i = new Intent(this, MainActivity.class);//change to right name
         startActivity(i);
     }
 
@@ -105,42 +122,11 @@ public class Recipe extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void addFavorites(View view)
-    {
-        readFromFile();
-        if(!existed)
-        {
-            writeToFile(rSelected);
-        }
-        else
-        {
-            if(favorite_recipes.contains(rSelected))
-            {
-                Context context = getApplicationContext();
-                CharSequence text = "Sorry, this entry has been added before";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-            else
-            {
-                String to_be_write = null;
-                for (String fr : favorite_recipes) {
-                    to_be_write += (fr + "\n");
-                }
-                to_be_write += rSelected;
-                writeToFile(to_be_write);
-                Intent i = new Intent(this, FavoriteActivity.class);//change to right name
-                startActivity(i);
-            }
-        }
-    }
-
     private void writeToFile(String data) {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("favorite.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
+            Log.i("test", data);
             outputStreamWriter.close();
         }
         catch (IOException e) {
@@ -197,5 +183,4 @@ public class Recipe extends AppCompatActivity {
             }
         }
     }
-
 }
